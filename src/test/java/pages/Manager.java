@@ -25,9 +25,9 @@ public class Manager {
             uploadPictureField = $("#uploadPicture"),
             currentAddressField = $("#currentAddress"),
             stateButton = $("#state"),
-            stateCity = $("#stateCity-wrapper"),
+            stateCity = $("#react-select-3-input"),
             cityButton = $("#city"),
-            cityField = $("#stateCity-wrapper"),
+            cityField = $("#react-select-4-input"),
             submitButton = $("#submit"),
             tableResponsive = $(".table-responsive");
 
@@ -65,13 +65,13 @@ public class Manager {
         return this;
     }
 
-    public Manager setSubjectInputField() {
-        subjectsInputField.setValue(subjectsInput);
+    public Manager setSubjectField(String subject) {
+        subjectsInputField.setValue(subject).pressEnter();
         return this;
     }
 
-    public Manager setHobby(String hobby) {
-        hobbiesField.$(byText(hobby)).click();
+    public Manager setHobby(String hobbies) {
+        hobbiesField.$(byText(hobbies)).click();
         return this;
     }
     public Manager setGender(String gender) {
@@ -79,13 +79,13 @@ public class Manager {
         return this;
     }
 
-    public Manager setPicture() {
-        uploadPictureField.uploadFromClasspath(uploadPicture);
+    public Manager setPicture(String picture) {
+        uploadPictureField.uploadFromClasspath(picture);
         return this;
     }
 
     public Manager setCurrentAddress(String currentAddress) {
-        currentAddressField.setValue(currentAddress);
+        currentAddressField.setValue(currentAddress).pressEnter();
         return this;
     }
 
@@ -95,18 +95,19 @@ public class Manager {
         return this;
     }
 
-    public Manager setStateCity(String state) {
+    public Manager setState(String state) {
+        stateButton.click();
         stateCity.setValue(state).pressEnter();
         return this;
     }
 
     public Manager setCity(String city) {
+        cityButton.click();
         cityField.setValue(city).pressEnter();
         return this;
     }
 
     public void activateForm() {
-
         submitButton.click();
     }
 
@@ -135,7 +136,6 @@ public class Manager {
                 text(state + " " + city));
         return this;
     }
-
 
 }
 

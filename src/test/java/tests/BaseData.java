@@ -1,9 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public  class BaseData {
   static  Faker faker = new Faker();
@@ -14,19 +11,16 @@ public  class BaseData {
             lastName = faker.name().lastName(),
             userEmail = faker.internet().emailAddress(),
             genterWrapper = "Male",
-            userNumber = "+7 " + faker.number().digits(7),
+            userNumber = faker.number().digits(10),
             calendarMonth = "February",
             calendarYear = "2000",
             calendarDay = "10",
             dateCreated = calendarDay + " " + calendarMonth + "," + calendarYear,
-            subjectsInput = "Maths",
+            subjects = "Maths",
             hobbies = "Music",
             uploadPicture = "tools.png",
             currentAddress = faker.address().fullAddress(),
             state = "Haryana",
             city = "Karnal";
-
-    String pngName = "testfillform";
-
 
 }

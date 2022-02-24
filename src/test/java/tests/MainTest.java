@@ -1,8 +1,8 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.Manager;
 
@@ -10,10 +10,12 @@ import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Configuration.browserSize;
 import static com.codeborne.selenide.Selenide.screenshot;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainTest extends BaseData {
     Manager app = new Manager();
-  static  BaseData b = new BaseData();
+    static BaseData test = new BaseData();
+    String pngFileName =  "test123";
 
     //    initial
     @BeforeAll
@@ -25,39 +27,40 @@ public class MainTest extends BaseData {
 
     // open and fill form
     @Test
+    @DisplayName(" -------- Fill Form ")
     public void openTest() {
         app.openSite()
                 .verifyTitle();
 
-        app.setFirstName(b.firstName)
-                .setLastName(b.lastName)
-                .setUserEmail(b.userEmail)
-                .setGender(genterWrapper)
-                .setUserNumber(b.userNumber)
-                .setSubjectInputField()
-                .setHobby(hobbies)
+        app.setFirstName(test.firstName)
+                .setLastName(test.lastName)
+                .setUserEmail(test.userEmail)
+                .setGender(test.genterWrapper)
+                .setUserNumber(test.userNumber)
                 .setDate(calendarDay, calendarMonth, calendarYear)
-                .setPicture()
-                .setCurrentAddress(b.currentAddress)
-                .setStateCity(state)
-                .setCity(city)
+                .setSubjectField(test.subjects)
+                .setHobby(test.hobbies)
+                .setPicture(test.uploadPicture)
+                .setCurrentAddress(test.currentAddress)
+                .setState(test.state)
+                .setCity(test.city)
                 .activateForm();
-        String pngFileName = screenshot(pngName);
-        Selenide.screenshot(pngFileName);
 
+        Selenide.screenshot(pngFileName);
+        sleep(2000);
 // control date in form
-        app.checkForm(b.firstName,
-                b.lastName,
-                b.userEmail,
-                genterWrapper,
-                b.userNumber,
-                dateCreated,
-                subjectsInput,
-                hobbies,
-                uploadPicture,
-                b.currentAddress,
-                 state,
-                 city);
+        app.checkForm(test.firstName,
+                test.lastName,
+                test.userEmail,
+                test.genterWrapper,
+                test.userNumber,
+                test.dateCreated,
+                test.subjects,
+                test.hobbies,
+                test.uploadPicture,
+                test.currentAddress,
+                test.state,
+                test.city);
 
     }
 }
