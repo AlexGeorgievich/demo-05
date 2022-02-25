@@ -15,7 +15,9 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class MainTest extends BaseData {
     Manager app = new Manager();
     static BaseData test = new BaseData();
-    String pngFileName =  "test123";
+    String screenshotBefore =  "before";
+    String screenshotFillForm =  "fillform";
+    String screenshotAfter =  "after";
 
     //    initial
     @BeforeAll
@@ -27,10 +29,11 @@ public class MainTest extends BaseData {
 
     // open and fill form
     @Test
-    @DisplayName(" -------- Fill Form ")
+    @DisplayName(" - Fill Form -")
     public void openTest() {
         app.openSite()
                 .verifyTitle();
+        Selenide.screenshot(screenshotBefore);
 
         app.setFirstName(test.firstName)
                 .setLastName(test.lastName)
@@ -40,13 +43,13 @@ public class MainTest extends BaseData {
                 .setDate(calendarDay, calendarMonth, calendarYear)
                 .setSubjectField(test.subjects)
                 .setHobby(test.hobbies)
-                .setPicture(test.uploadPicture)
+                .uploadPicture(test.uploadPicture)
                 .setCurrentAddress(test.currentAddress)
                 .setState(test.state)
-                .setCity(test.city)
-                .activateForm();
+                .setCity(test.city);
+        Selenide.screenshot(screenshotFillForm);
+                app.activateForm();
 
-        Selenide.screenshot(pngFileName);
         sleep(2000);
 // control date in form
         app.checkForm(test.firstName,
@@ -61,6 +64,7 @@ public class MainTest extends BaseData {
                 test.currentAddress,
                 test.state,
                 test.city);
+        Selenide.screenshot(screenshotAfter);
 
     }
 }

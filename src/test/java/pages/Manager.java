@@ -79,7 +79,7 @@ public class Manager {
         return this;
     }
 
-    public Manager setPicture(String picture) {
+    public Manager uploadPicture(String picture) {
         uploadPictureField.uploadFromClasspath(picture);
         return this;
     }
