@@ -36,15 +36,13 @@ public class Manager {
             submitButton = $("#submit"),
             tableResponsive = $(".table-responsive");
 
-
-
     private CalendarComponent calendarComponent = new CalendarComponent();
-@Step("Open site")
+@Step("Open form and go")
     public Manager openSite() {
         open("/automation-practice-form");
         return this;
     }
-@Step("Verify Title")
+@Step("Verify Title of form on screen")
     public Manager verifyTitle() {
         headerTitle.shouldHave(text(title));
         return this;
@@ -69,27 +67,27 @@ public class Manager {
         userNumberField.setValue(userNumber);
         return this;
     }
-@Step("Set subject")
+@Step("Set subject to learn")
     public Manager setSubjectField(String subject) {
         subjectsInputField.setValue(subject).pressEnter();
         return this;
     }
-@Step("Set Hobby")
+@Step("Set favorite Hobby")
     public Manager setHobby(String hobbies) {
         hobbiesField.$(byText(hobbies)).click();
         return this;
     }
-    @Step("Who are you?")
+    @Step("Just tell me - Who are you?")
     public Manager setGender(String gender) {
         genterWrapperField.$(byText(gender)).click();
         return this;
     }
-@Step(" You picture")
+@Step(" Your love picture")
     public Manager uploadPicture(String picture) {
         uploadPictureField.uploadFromClasspath(picture);
         return this;
     }
-@Step("Set current Address")
+@Step("Set current Address in this moment")
     public Manager setCurrentAddress(String currentAddress) {
         currentAddressField.setValue(currentAddress).pressEnter();
         return this;
@@ -100,23 +98,23 @@ public class Manager {
         calendarComponent.setDate(day, month, year);
         return this;
     }
-@Step("Where are you")
+@Step("Where are you now?")
     public Manager setState(String state) {
         stateButton.click();
         stateCity.setValue(state).pressEnter();
         return this;
     }
-@Step("You City")
+@Step("You City for living")
     public Manager setCity(String city) {
         cityButton.click();
         cityField.setValue(city).pressEnter();
         return this;
     }
-
+@Step("let's go ")
     public void activateForm() {
         submitButton.click();
     }
-@Step(" Control you Data")
+@Step(" Control your data on screen of form")
     public Manager checkForm(
             String firstName,
             String lastName,
